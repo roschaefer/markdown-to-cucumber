@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Cache Rust
+        uses: Swatinem/rust-cache@v2
+
+      - name: Set up just
+        uses: extractions/setup-just@v3
+
+      - name: Install cargo-audit and cargo-machete
+        uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-audit,cargo-machete
+
+      - name: Check formatting
+        run: just fmt-check
+
+      - name: Lint
+        run: just clippy
+
+      - name: Check for unused dependencies
+        run: just machete
+
+      - name: Security audit
+        run: just audit
+
+      - name: Run tests
+        run: just test
