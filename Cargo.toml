@@ -1,0 +1,20 @@
+[package]
+name = "markdown-to-cucumber"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Extract fenced Cucumber/Gherkin code blocks from Markdown docs into .feature files at build time, so the docs can be executed as tests"
+repository = "https://github.com/roschaefer/markdown-to-cucumber"
+
+[lib]
+name = "markdown_to_cucumber"
+path = "src/lib.rs"
+
+[dev-dependencies]
+cucumber = "0.23"
+tempfile = "3"
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+
+[[test]]
+name = "readme"
+harness = false
