@@ -35,7 +35,7 @@ crate has no opinion on that and doesn't even depend on `cucumber`.
 
 ```toml
 [build-dependencies]
-markdown-to-cucumber = { git = "ssh://git@github.com/roschaefer/markdown-to-cucumber.git", branch = "main" }
+markdown-to-cucumber = { git = "https://github.com/roschaefer/markdown-to-cucumber.git", branch = "main" }
 ```
 
 `build.rs`:
