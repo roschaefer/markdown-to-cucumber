@@ -12,8 +12,8 @@ path = "src/lib.rs"
 
 [dev-dependencies]
 cucumber = "0.23"
-tempfile = "3"
-tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+tempfile = "3.27.0"
+tokio = { version = "1.53.1", features = ["macros", "rt-multi-thread"] }
 
 [[test]]
 name = "readme"
